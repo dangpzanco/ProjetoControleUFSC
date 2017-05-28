@@ -31,10 +31,9 @@ float gainControl = 1.0f;
 int16_t desiredVelocity = 600;
 
 void callback(){
-
     leSerial++;
     
-
+    // Input
     buffIn[0] = analogRead(A0);
 
     // Moving Average
@@ -44,6 +43,7 @@ void callback(){
     }
     h >>= log2Size; // Divide by filterSize
 
+    // Calculate error
     int16_t error = desiredVelocity - h;
 
     // c[n] = c[n-1] + a[0] * e[n] + a[1] * e[n-1]
@@ -64,22 +64,19 @@ void callback(){
     for(int i = 0; i < filterSize - 1; i++) {
         buffIn[filterSize - 1 - i] = buffIn[filterSize - i - 2];
     }
-
-    digitalWrite(13, digitalRead(13) ^ 1);
 }
 
 
 void loop(){
-  if(leSerial >= 100){
-    // Se receber algo pela serial
-    if (Serial.available() > 0){
-      // Lê toda string recebida
+    if(leSerial >= 100){
+        // Se receber algo pela serial
+        if (Serial.available() > 0){
+            // Lê toda string recebida
+            char recebido = Serial.read();
 
-      char recebido = Serial.read();
-        
-      if (recebido == 1){
-        Serial.print("oi, tudo bem");
-      }
+            if (recebido == 1){
+                Serial.print("oi, tudo bem");
+            }
+        }
     }
-  }
 }
