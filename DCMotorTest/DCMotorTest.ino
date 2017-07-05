@@ -24,7 +24,8 @@ void setup(){
 }
 
 //float a[2] = {70.0567e-3f, -60.0567e-3f};
-float a[2] = {70.0567e-3f, -65.2310e-3f};
+// float a[2] = {70.0567e-3f, -65.2310e-3f};
+float a[2] = {70.0567e-3f, -65.06e-3f};
 int16_t buffIn[filterSize] = {0};
 int16_t buffControl[2] = {0};
 float gainControl = 1.0f;
@@ -110,8 +111,8 @@ void loop(){
         if (Serial.available() > 0){
 
             String VelocidadeRPM = Serial.readString();
-            desiredVelocity = VelocidadeRPM.toFloat() * 800 / 87.5f;
-            
+//             desiredVelocity = VelocidadeRPM.toFloat() * 800 / 87.5f;
+            desiredVelocity = VelocidadeRPM.toFloat() * 800 / 101.5f;
 //            // Lê toda string recebida
 //            char recebido = Serial.read();
 //
