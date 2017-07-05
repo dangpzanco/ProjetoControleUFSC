@@ -25,7 +25,7 @@ void setup(){
 
 //float a[2] = {70.0567e-3f, -60.0567e-3f};
 // float a[2] = {70.0567e-3f, -65.2310e-3f};
-float a[2] = {70.0567e-3f, -65.06e-3f};
+float a[2] = {70.0567e-3f, -65.0567e-3f};
 int16_t buffIn[filterSize] = {0};
 int16_t buffControl[2] = {0};
 float gainControl = 1.0f;
